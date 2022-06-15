@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../pages/my_servise.dart';
+import '../core/home_page.dart';
+
 import '../theme/app_theme.dart';
 
 ///* MATERIAL APP STATE
@@ -16,7 +17,7 @@ class Resume extends StatelessWidget {
       theme: appTheme(),
       initialRoute: '/',
       routes: {
-        '/': (context) => MyServise(),
+        '/': (context) => const HomePage(),
       },
     );
   }

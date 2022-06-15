@@ -14,6 +14,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.2
+  flutter_svg: ^1.1.0
 
 dev_dependencies:
   effective_dart: any
@@ -27,6 +28,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/json/
     
    # THIS IS MY FAVORITE FONTS, ITs A GIFT FOR YOU 
   fonts:

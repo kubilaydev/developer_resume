@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../models/content.dart';
+import '../tools/constants.dart';
 import '../widgets/header_title_painter.dart';
+import '../widgets/text_header.dart';
 
 ///
 class MyServise extends StatefulWidget {
@@ -13,28 +17,211 @@ class MyServise extends StatefulWidget {
 
 class _MyServiseState extends State<MyServise> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     /// Size of page
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                width: size.width,
-                child: Stack(
-                  children: [
-                    CustomPaint(
-                      painter: HeaderTitlePainter(size: size),
-                    ),
-                    Container(
-                        width: size.width,
-                        child: Image.asset("assets/images/me.jpg")),
-                  ],
-                )),
-          ],
+      backgroundColor: const Color(0XFF1D1F20),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: FutureBuilder<Map<String, dynamic>>(
+              future: Content().getContent(),
+              builder: (context, snapShot) {
+                if (snapShot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //? HEADER
+                      Container(
+                          width: size.width,
+                          height: Image.asset("assets/images/me.jpg").height,
+                          child: Stack(
+                            children: [
+                              Container(
+                                  width: size.width,
+                                  child: Image.asset("assets/images/me.jpg")),
+                              CustomPaint(
+                                painter: HeaderTitlePainter(
+                                  size: size,
+                                  height: size.height,
+                                  width: size.width,
+                                ),
+                                child: Container(
+                                    padding: EdgeInsets.only(
+                                        bottom: size.width * 0.2),
+                                    child: const Center(
+                                      child: Text(
+                                        "HELLO!",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    )),
+                              ),
+                            ],
+                          )),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextHeader(
+                                headline: "About Me",
+                                subline:
+                                    "From entrepreneurship to development"),
+                            smallSpace,
+                            Text(
+                              snapShot.data!["about_me"],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            largeSpace,
+                            TextHeader(
+                                headline: "My Servise",
+                                subline: "What i can do for you?"),
+                            largeSpace,
+                            AssetHeader(
+                              svgPath: "assets/icons/apps.svg",
+                              title: "My Servise",
+                            ),
+                            smallSpace,
+                            Text(
+                              snapShot.data!["about_me"],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            largeSpace,
+                            AssetHeader(
+                              svgPath: "assets/icons/ui_design.svg",
+                              title: "UI Design",
+                            ),
+                            smallSpace,
+                            Text(
+                              snapShot.data!["ui_design"],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            smallSpace,
+                            Row(
+                              children: [
+                                AssetTitle(
+                                    svgPath: "assets/icons/figma.svg",
+                                    title: "Figma"),
+                                horizontalLargeSpace,
+                                AssetTitle(
+                                    svgPath: "assets/icons/adobe_xd.svg",
+                                    title: "Adobe XD"),
+                              ],
+                            ),
+                            largeSpace,
+                            AssetHeader(
+                              svgPath: "assets/icons/bulb.svg",
+                              title: "Start-up Consultancy",
+                            ),
+                            smallSpace,
+                            Text(
+                              snapShot.data!["start_up"],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            smallSpace,
+                            AssetTitle(
+                                svgPath: "assets/icons/building.svg",
+                                title: "Silicon Valley"),
+                            smallSpace,
+                            AssetTitle(
+                                svgPath: "assets/icons/star.svg",
+                                title: "Many Accelerators Experience"),
+                            smallSpace,
+                            AssetTitle(
+                                svgPath: "assets/icons/money_check.svg",
+                                title: "Company and Investment Experience "),
+                            smallSpace,
+                          ],
+                        ),
+                      )
+                    ],
+                  );
+                }
+              }),
         ),
       ),
+    );
+  }
+}
+
+///
+class AssetHeader extends StatelessWidget {
+  ///
+  AssetHeader({
+    Key? key,
+    required this.svgPath,
+    required this.title,
+  }) : super(key: key);
+
+  ///
+  final String svgPath;
+
+  ///
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(height: 32, width: 32, child: SvgPicture.asset(svgPath)),
+        horizontalSpace,
+        Text(
+          title,
+          style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 24),
+        ),
+      ],
+    );
+  }
+}
+
+///
+class AssetTitle extends StatelessWidget {
+  ///
+  AssetTitle({
+    Key? key,
+    required this.svgPath,
+    required this.title,
+  }) : super(key: key);
+
+  ///
+  final String svgPath;
+
+  ///
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+            height: 32,
+            width: 32,
+            child: SvgPicture.asset(
+              svgPath,
+            )),
+        horizontalSpace,
+        Text(
+          title,
+          maxLines: 2,
+          style: Theme.of(context)
+              .textTheme
+              .headline1!
+              .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+      ],
     );
   }
 }

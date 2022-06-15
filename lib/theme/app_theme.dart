@@ -8,8 +8,8 @@ ThemeData appTheme() {
   TextTheme _appTextTheme(TextTheme base) {
     return base.copyWith(
       headline1: base.headline1!.copyWith(
-          fontSize: 28,
-          color: const Color(0XFF4A4A4A),
+          fontSize: 40,
+          color: Colors.white,
           fontFamily: 'SourseSansPro',
           fontWeight: FontWeight.w600),
       headline2: base.headline2!.copyWith(
@@ -18,8 +18,13 @@ ThemeData appTheme() {
           fontFamily: 'SourseSansPro',
           fontWeight: FontWeight.w600),
       subtitle1: base.subtitle1!.copyWith(
-          fontSize: 22,
-          color: const Color(0XFF4A4A4A),
+          fontSize: 28,
+          color: const Color(0XFF0E73CC),
+          fontFamily: 'SourseSansPro',
+          fontWeight: FontWeight.w400),
+      bodyText1: base.bodyText1!.copyWith(
+          fontSize: 21,
+          color: Colors.white,
           fontFamily: 'SourseSansPro',
           fontWeight: FontWeight.w400),
       button: base.button!.copyWith(
@@ -29,9 +34,6 @@ ThemeData appTheme() {
           fontWeight: FontWeight.w400),
     );
   }
-
-//? SETUP YOUR THEME HERE
-//? ITS EADY TO USE !
 
   return base.copyWith(
     primaryColor: const Color(0XFF73D0FA),
