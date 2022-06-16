@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../models/content.dart';
 import '../tools/constants.dart';
+import '../widgets/asset_header.dart';
+import '../widgets/asset_title.dart';
 import '../widgets/header_title_painter.dart';
 import '../widgets/text_header.dart';
 
@@ -30,9 +31,9 @@ class _MyServiseState extends State<MyServise> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: FutureBuilder<Map<String, dynamic>>(
-              future: Content().getContent(),
-              builder: (context, snapShot) {
-                if (snapShot.connectionState == ConnectionState.waiting) {
+              future: Content().getTextContent(),
+              builder: (context, content) {
+                if (content.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 } else {
                   return Column(
@@ -82,7 +83,7 @@ class _MyServiseState extends State<MyServise> {
                                     "From entrepreneurship to development"),
                             smallSpace,
                             Text(
-                              snapShot.data!["about_me"],
+                              content.data!["about_me"],
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             largeSpace,
@@ -96,7 +97,7 @@ class _MyServiseState extends State<MyServise> {
                             ),
                             smallSpace,
                             Text(
-                              snapShot.data!["about_me"],
+                              content.data!["about_me"],
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             largeSpace,
@@ -106,7 +107,7 @@ class _MyServiseState extends State<MyServise> {
                             ),
                             smallSpace,
                             Text(
-                              snapShot.data!["ui_design"],
+                              content.data!["ui_design"],
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             smallSpace,
@@ -128,7 +129,7 @@ class _MyServiseState extends State<MyServise> {
                             ),
                             smallSpace,
                             Text(
-                              snapShot.data!["start_up"],
+                              content.data!["start_up"],
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             smallSpace,
@@ -153,75 +154,6 @@ class _MyServiseState extends State<MyServise> {
               }),
         ),
       ),
-    );
-  }
-}
-
-///
-class AssetHeader extends StatelessWidget {
-  ///
-  AssetHeader({
-    Key? key,
-    required this.svgPath,
-    required this.title,
-  }) : super(key: key);
-
-  ///
-  final String svgPath;
-
-  ///
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(height: 32, width: 32, child: SvgPicture.asset(svgPath)),
-        horizontalSpace,
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 24),
-        ),
-      ],
-    );
-  }
-}
-
-///
-class AssetTitle extends StatelessWidget {
-  ///
-  AssetTitle({
-    Key? key,
-    required this.svgPath,
-    required this.title,
-  }) : super(key: key);
-
-  ///
-  final String svgPath;
-
-  ///
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-            height: 32,
-            width: 32,
-            child: SvgPicture.asset(
-              svgPath,
-            )),
-        horizontalSpace,
-        Text(
-          title,
-          maxLines: 2,
-          style: Theme.of(context)
-              .textTheme
-              .headline1!
-              .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-      ],
     );
   }
 }

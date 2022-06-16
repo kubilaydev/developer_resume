@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../pages/my_experince.dart';
 import '../pages/my_servise.dart';
 
 ///
@@ -13,12 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int pageIndex = 0;
+  int pageIndex = 2;
 
   final pages = [
     MyServise(),
     MyServise(),
-    MyServise(),
+    MyExperience(),
     MyServise(),
   ];
 
@@ -101,12 +102,14 @@ class _HomePageState extends State<HomePage> {
                   ? Container(
                       height: 24,
                       width: 24,
-                      child: SvgPicture.asset("assets/icons/pc_active.svg"),
+                      child:
+                          SvgPicture.asset("assets/icons/business_active.svg"),
                     )
                   : Container(
                       height: 24,
                       width: 24,
-                      child: SvgPicture.asset("assets/icons/pc_passive.svg"),
+                      child:
+                          SvgPicture.asset("assets/icons/business_passive.svg"),
                     )),
           IconButton(
               enableFeedback: false,
@@ -120,14 +123,12 @@ class _HomePageState extends State<HomePage> {
                   ? Container(
                       height: 24,
                       width: 24,
-                      child:
-                          SvgPicture.asset("assets/icons/business_active.svg"),
+                      child: SvgPicture.asset("assets/icons/pc_active.svg"),
                     )
                   : Container(
                       height: 24,
                       width: 24,
-                      child:
-                          SvgPicture.asset("assets/icons/business_passive.svg"),
+                      child: SvgPicture.asset("assets/icons/pc_passive.svg"),
                     )),
         ],
       ),

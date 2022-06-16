@@ -27,6 +27,7 @@ class TextHeader extends StatelessWidget {
           subline,
           style: Theme.of(context).textTheme.subtitle1,
         ),
+        smallSpace,
         leftDivider(size: size),
       ],
     );
