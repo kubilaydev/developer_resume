@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../pages/done_projects.dart';
 import '../pages/my_experince.dart';
 import '../pages/my_servise.dart';
 
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   final pages = [
     MyServise(),
-    MyServise(),
+    DoneProjects(),
     MyExperience(),
     MyServise(),
   ];

@@ -4,7 +4,7 @@ import '../models/content.dart';
 import '../models/experience.dart';
 import '../tools/constants.dart';
 
-import '../widgets/experience_card.dart';
+import '../cards/experience_card.dart';
 
 import '../widgets/text_header.dart';
 
@@ -18,11 +18,6 @@ class MyExperience extends StatefulWidget {
 }
 
 class _MyExperienceState extends State<MyExperience> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   List<Experience> experienceList = [
     Experience(
       svgIconPath: "assets/icons/flutter_active.svg",

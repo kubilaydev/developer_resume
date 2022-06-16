@@ -135,7 +135,7 @@ class _MyServiseState extends State<MyServise> {
                             smallSpace,
                             AssetTitle(
                                 svgPath: "assets/icons/building.svg",
-                                title: "Silicon Valley"),
+                                title: "Been in Silicon Valley "),
                             smallSpace,
                             AssetTitle(
                                 svgPath: "assets/icons/star.svg",
