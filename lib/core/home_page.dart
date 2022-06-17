@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../pages/development_style.dart';
 import '../pages/done_projects.dart';
 import '../pages/my_experince.dart';
 import '../pages/my_servise.dart';
@@ -15,13 +16,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int pageIndex = 2;
+  int pageIndex = 3;
 
   final pages = [
     MyServise(),
     DoneProjects(),
     MyExperience(),
-    MyServise(),
+    DevelopmentStyle(),
   ];
 
   @override

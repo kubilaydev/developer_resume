@@ -22,6 +22,11 @@ ThemeData appTheme() {
           color: const Color(0XFF0E73CC),
           fontFamily: 'SourseSansPro',
           fontWeight: FontWeight.w600),
+      subtitle2: base.subtitle2!.copyWith(
+          fontSize: 21,
+          color: Colors.white,
+          fontFamily: 'SourseSansPro',
+          fontWeight: FontWeight.w400),
       bodyText1: base.bodyText1!.copyWith(
           fontSize: 21,
           color: Colors.white,
