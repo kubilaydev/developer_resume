@@ -32,108 +32,114 @@ class ExperienceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        smallSpace,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 54,
-              width: 54,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                  color: const Color(0XFFD9D9D9).withOpacity(0.2),
-                  shape: BoxShape.circle),
-              child: SvgPicture.asset(svgIconPath),
-            ),
-            horizontalSpace,
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 42,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                  constraints:
-                      const BoxConstraints(minWidth: 350, maxWidth: 500),
-                  decoration: const BoxDecoration(
-                    color: Color(0XFF0E73CC),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24),
-                      topRight: Radius.circular(24),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline1!
-                              .copyWith(fontSize: 18)),
-                      Text(date,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1!
-                              .copyWith(fontSize: 16)),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  constraints:
-                      const BoxConstraints(minWidth: 350, maxWidth: 500),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(24),
-                      bottomRight: Radius.circular(24),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(content,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline1!
-                              .copyWith(fontSize: 18)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minWidth: 350, maxWidth: 500),
+      child: Column(
+        children: [
+          smallSpace,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 54,
+                width: 54,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    color: const Color(0XFFD9D9D9).withOpacity(0.2),
+                    shape: BoxShape.circle),
+                child: SvgPicture.asset(svgIconPath),
+              ),
+              horizontalSpace,
+              Expanded(
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 42,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 4),
+                      decoration: const BoxDecoration(
+                        color: Color(0XFF0E73CC),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SizedBox(),
+                          Text(title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline1!
+                                  .copyWith(fontSize: 18)),
+                          Text(date,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(fontSize: 16)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 12),
+                      constraints:
+                          const BoxConstraints(minWidth: 350, maxWidth: 500),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(content,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline1!
+                                  .copyWith(fontSize: 18)),
+                          const SizedBox(
+                            height: 6,
+                          ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Container(
-                                  height: 18,
-                                  width: 18,
-                                  child: SvgPicture.asset(
-                                    "assets/icons/marker.svg",
-                                    color: Colors.white,
-                                  )),
-                              const SizedBox(
-                                width: 5,
+                              const SizedBox(),
+                              Row(
+                                children: [
+                                  Container(
+                                      height: 18,
+                                      width: 18,
+                                      child: SvgPicture.asset(
+                                        "assets/icons/marker.svg",
+                                        color: Colors.white,
+                                      )),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(location,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .copyWith(fontSize: 16)),
+                                ],
                               ),
-                              Text(location,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1!
-                                      .copyWith(fontSize: 16)),
                             ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    smallSpace,
+                  ],
                 ),
-                smallSpace,
-              ],
-            )
-          ],
-        ),
-      ],
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

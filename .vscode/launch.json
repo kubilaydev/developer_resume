@@ -3,15 +3,16 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-
+"program" : "lib/main.dart",
     "configurations": [
+
         {
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
            
             "url": "http://localhost:8080",
-            "webRoot": "lib/core/main.dart"
+            "webRoot": "lib/main.dart"
         },
         
         {
@@ -25,7 +26,7 @@
             "name": "developer_resume",
             "request": "launch",
             "type": "dart",
-            "program" : "lib/core/main.dart",
+            "program" : "lib/main.dart",
         },
         {
             "name": "developer_resume (profile mode)",

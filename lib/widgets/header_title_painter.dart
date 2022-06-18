@@ -3,27 +3,22 @@ import 'package:flutter/material.dart';
 ///
 class HeaderTitlePainter extends CustomPainter {
   ///
-  HeaderTitlePainter(
-      {required this.size, required this.height, required this.width});
+  HeaderTitlePainter({
+    required this.size,
+  });
 
   ///
   final Size size;
 
-  ///
-  final double height;
-
-  ///
-  final double width;
-
   @override
   void paint(Canvas canvas, Size size) {
-    var x = size.width;
-    var y = size.height;
+    var x = this.size.width;
+    var y = this.size.height;
 
     var path = Path()
       ..moveTo(0, 0)
-      ..lineTo(0, 1.7 * y)
-      ..lineTo(x / 1.5, y - 15)
+      ..lineTo(x / 2, y / 2)
+      ..lineTo(0, y)
       ..close();
 
     var paint = Paint()

@@ -17,6 +17,7 @@ class AssetTitle extends StatelessWidget {
 
   ///
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,13 +30,15 @@ class AssetTitle extends StatelessWidget {
               svgPath,
             )),
         horizontalSpace,
-        Text(
-          title,
-          maxLines: 2,
-          style: Theme.of(context)
-              .textTheme
-              .headline1!
-              .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 2,
+            style: Theme.of(context)
+                .textTheme
+                .headline1!
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );

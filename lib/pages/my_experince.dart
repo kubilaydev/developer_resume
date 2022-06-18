@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../cards/experience_card.dart';
 import '../models/content.dart';
 import '../models/experience.dart';
 import '../tools/constants.dart';
-
-import '../cards/experience_card.dart';
 
 import '../widgets/text_header.dart';
 
@@ -42,6 +41,8 @@ class _MyExperienceState extends State<MyExperience> {
     ),
   ];
 
+  late Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,43 +50,50 @@ class _MyExperienceState extends State<MyExperience> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: FutureBuilder<Map<String, dynamic>>(
-              future: Content().getTextContent(),
+              future: contentFtr,
               builder: (context, content) {
                 if (content.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextHeader(
-                                headline: "My Experience",
-                                subline:
-                                    "3 years entrepreneur & 3 years in coding"),
-                            smallSpace,
-                            Text(
-                              content.data!["my_experience"],
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                            largeSpace,
-                            for (var experience in experienceList)
+                  return Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 500,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextHeader(
+                                    headline: "My Experience",
+                                    subline: "3 years entrepreneur & "
+                                        "3 years in coding"),
+                                smallSpace,
+                                Text(
+                                  content.data!["my_experience"],
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                                largeSpace,
+                                for (var experience in experienceList)
 
-                              /// EXPERIENCE CARD
-                              ExperienceCard(
-                                svgIconPath: experience.svgIconPath,
-                                title: experience.title,
-                                content: content.data!["${experience.content}"],
-                                date: experience.date,
-                                location: experience.location,
-                              ),
-                          ],
-                        ),
-                      )
-                    ],
+                                  /// EXPERIENCE CARD
+                                  ExperienceCard(
+                                    svgIconPath: experience.svgIconPath,
+                                    title: experience.title,
+                                    content:
+                                        content.data!["${experience.content}"],
+                                    date: experience.date,
+                                    location: experience.location,
+                                  ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   );
                 }
               }),

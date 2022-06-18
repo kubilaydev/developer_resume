@@ -4,6 +4,7 @@ class App {
   App({
     required this.appName,
     required this.assetPath,
+    required this.appId,
   });
 
   ///
@@ -11,4 +12,7 @@ class App {
 
   ///
   final String assetPath;
+
+  ///
+  final String appId;
 }

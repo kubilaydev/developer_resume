@@ -24,9 +24,12 @@ class AssetHeader extends StatelessWidget {
       children: [
         Container(height: 32, width: 32, child: SvgPicture.asset(svgPath)),
         horizontalSpace,
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 24),
+        Expanded(
+          child: Text(
+            title,
+            style:
+                Theme.of(context).textTheme.headline1!.copyWith(fontSize: 24),
+          ),
         ),
       ],
     );

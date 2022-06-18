@@ -19,53 +19,73 @@ class DoneProjects extends StatefulWidget {
 
 class _DoneProjectsState extends State<DoneProjects> {
   final List<App> appList = [
-    App(appName: "Şive App", assetPath: "assets/images/accent.jpg"),
-    App(appName: "Şive App", assetPath: "assets/images/accent.jpg"),
-    App(appName: "Şive App", assetPath: "assets/images/accent.jpg"),
-    App(appName: "Şive App", assetPath: "assets/images/accent.jpg")
+    App(
+        appName: "Şive App1",
+        assetPath: "assets/images/accent.jpg",
+        appId: "sive"),
+    App(
+        appName: "Şive App2",
+        assetPath: "assets/images/accent.jpg",
+        appId: "sive"),
+    App(
+        appName: "Şive App3",
+        assetPath: "assets/images/accent.jpg",
+        appId: "sive"),
+    App(
+        appName: "Şive App4",
+        assetPath: "assets/images/accent.jpg",
+        appId: "sive")
   ];
+
+  late Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0XFF1D1F20),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: FutureBuilder<Map<String, dynamic>>(
-              future: Content().getTextContent(),
-              builder: (context, content) {
-                if (content.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextHeader(
-                                headline: "Done Projects",
-                                subline: "Mostly Entrepreneurial Developer"),
-                            smallSpace,
-                            Text(
-                              content.data!["my_experience"],
-                              style: Theme.of(context).textTheme.bodyText1,
+        child: Align(
+          alignment: Alignment.center,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: SingleChildScrollView(
+              child: FutureBuilder<Map<String, dynamic>>(
+                  future: contentFtr,
+                  builder: (context, content) {
+                    if (content.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextHeader(
+                                    headline: "Done Projects",
+                                    subline:
+                                        "Mostly Entrepreneurial Developer"),
+                                smallSpace,
+                                Text(
+                                  content.data!["my_experience"],
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                                largeSpace,
+                                for (var app in appList)
+                                  AppCard(
+                                    app: app,
+                                  ),
+                              ],
                             ),
-                            largeSpace,
-                            for (var app in appList)
-                              AppCard(
-                                assetPath: app.assetPath,
-                                appName: app.assetPath,
-                              ),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
-                }
-              }),
+                          )
+                        ],
+                      );
+                    }
+                  }),
+            ),
+          ),
         ),
       ),
     );

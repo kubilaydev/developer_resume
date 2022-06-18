@@ -28,20 +28,26 @@ class AssetDetailed extends StatelessWidget {
       children: [
         Container(height: 36, width: 36, child: SvgPicture.asset(svgPath)),
         horizontalSpace,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style:
-                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 12),
-            ),
-            Text(
-              content,
-              style:
-                  Theme.of(context).textTheme.headline1!.copyWith(fontSize: 14),
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(fontSize: 12),
+              ),
+              Text(
+                content,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1!
+                    .copyWith(fontSize: 14),
+              ),
+            ],
+          ),
         ),
       ],
     );
