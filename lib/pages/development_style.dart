@@ -59,7 +59,7 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
     Equipment(
         svgPath: "assets/icons/bag.svg",
         content: "Peak D.Everyday",
-        title: "Mobile Bag"),
+        title: "mobile_bag"),
   ];
 
   final List<AssetWithTitleOrHeader> _suitableOffice = [
@@ -74,7 +74,7 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
 
   final List<AssetWithTitleOrHeader> _suitableRemote = [
     AssetWithTitleOrHeader(
-        svgPath: "assets/icons/clickup.svg", title: "Clickup"),
+        svgPath: "assets/icons/clickup.svg", title: "clickup"),
     AssetWithTitleOrHeader(
         svgPath: "assets/icons/online_meeting.svg", title: "meeting_apps"),
     AssetWithTitleOrHeader(svgPath: "assets/icons/github.svg", title: "github"),
