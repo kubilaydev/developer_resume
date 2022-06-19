@@ -101,11 +101,13 @@ class _MyServiseState extends State<MyServise> {
                                   color: Colors.white,
                                 ),
                               ),
+                              /*
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/whatsapp.svg",
                                   voidCallback: () {}),
                               horizontalSpace,
+                              */
                               AssetButton(
                                   svgPath: "assets/icons/github.svg",
                                   voidCallback: () {
