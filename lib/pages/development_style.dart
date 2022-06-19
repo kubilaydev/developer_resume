@@ -122,9 +122,8 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
                   "suitable_with",
                   style: Theme.of(context).textTheme.bodyText1,
                 ).tr(),
-                smallSpace,
                 ContentAligner<AssetWithTitleOrHeader>(
-                    space: mediumSpace,
+                    space: smallSpace,
                     builder: (s) {
                       return AssetTitle(svgPath: s.svgPath, title: s.title);
                     },
@@ -144,9 +143,8 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
                   "suitable_with",
                   style: Theme.of(context).textTheme.bodyText1,
                 ).tr(),
-                mediumSpace,
                 ContentAligner<AssetWithTitleOrHeader>(
-                    space: mediumSpace,
+                    space: smallSpace,
                     builder: (s) =>
                         AssetTitle(svgPath: s.svgPath, title: s.title),
                     contents: _suitableOffice),
@@ -155,7 +153,6 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
                   svgPath: "assets/icons/magic.svg",
                   title: "dev_equipment",
                 ),
-                mediumSpace,
                 ContentAligner<Equipment>(
                     builder: (eq) => AssetDetailed(
                         svgPath: eq.svgPath,
