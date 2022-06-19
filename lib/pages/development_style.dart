@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../models/asset_with_text.dart';
@@ -32,31 +33,31 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
     Equipment(
         svgPath: "assets/icons/macbook.svg",
         content: "Macbook Pro 14''",
-        title: "Computer"),
+        title: "computer"),
     Equipment(
         svgPath: "assets/icons/screen.svg",
         content: "AOC 23.8” IPS SLIM",
-        title: "Screen"),
+        title: "screen"),
     Equipment(
         svgPath: "assets/icons/keyboard.svg",
         content: "Apple Magic Keyb.",
-        title: "Keyboard"),
+        title: "keyboard"),
     Equipment(
         svgPath: "assets/icons/mouse.svg",
         content: "Apple Magic Mouse",
-        title: "Mause"),
+        title: "mouse"),
     Equipment(
         svgPath: "assets/icons/ios.svg",
         content: "iPhone 11",
-        title: "Ios Device"),
+        title: "ios_device"),
     Equipment(
         svgPath: "assets/icons/android.svg",
         content: "Honor Magic 2",
-        title: "Android Device"),
+        title: "android_device"),
     Equipment(
         svgPath: "assets/icons/mug.svg",
         content: "Contigo Luxe ",
-        title: "Coffee Mug"),
+        title: "coffee_mug"),
     Equipment(
         svgPath: "assets/icons/bag.svg",
         content: "Peak D.Everyday",
@@ -64,26 +65,24 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
   ];
 
   final List<AssetWithTitleOrHeader> _suitableOffice = [
+    AssetWithTitleOrHeader(svgPath: "assets/icons/stop.svg", title: "no_need"),
     AssetWithTitleOrHeader(
-        svgPath: "assets/icons/stop.svg", title: "No Need Office Equipment"),
+        svgPath: "assets/icons/shift.svg", title: "suitable_shift"),
     AssetWithTitleOrHeader(
-        svgPath: "assets/icons/shift.svg", title: "Suitable Shift Periods"),
+        svgPath: "assets/icons/social.svg", title: "social_comp"),
     AssetWithTitleOrHeader(
-        svgPath: "assets/icons/social.svg",
-        title: " Fast Social Compatibility"),
-    AssetWithTitleOrHeader(
-        svgPath: "assets/icons/office.svg", title: "Suitable  Office Location"),
+        svgPath: "assets/icons/office.svg", title: "office_location"),
   ];
 
   final List<AssetWithTitleOrHeader> _suitableRemote = [
     AssetWithTitleOrHeader(
         svgPath: "assets/icons/clickup.svg", title: "Clickup"),
     AssetWithTitleOrHeader(
-        svgPath: "assets/icons/online_meeting.svg", title: "Meeting Apps"),
-    AssetWithTitleOrHeader(svgPath: "assets/icons/github.svg", title: "Github"),
-    AssetWithTitleOrHeader(svgPath: "assets/icons/notion.svg", title: "Notion"),
-    AssetWithTitleOrHeader(svgPath: "assets/icons/slack.svg", title: "Slack"),
-    AssetWithTitleOrHeader(svgPath: "assets/icons/trello.svg", title: "Trello"),
+        svgPath: "assets/icons/online_meeting.svg", title: "meeting_apps"),
+    AssetWithTitleOrHeader(svgPath: "assets/icons/github.svg", title: "github"),
+    AssetWithTitleOrHeader(svgPath: "assets/icons/notion.svg", title: "notion"),
+    AssetWithTitleOrHeader(svgPath: "assets/icons/slack.svg", title: "slack"),
+    AssetWithTitleOrHeader(svgPath: "assets/icons/trello.svg", title: "trello"),
   ];
 
   @override
@@ -91,97 +90,85 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
     Widget result = ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 500),
       child: SingleChildScrollView(
-        child: FutureBuilder<Map<String, dynamic>>(
-            future: contentFtr,
-            builder: (context, content) {
-              if (content.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //? HEADER
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextHeader(
-                              headline: "Development Style",
-                              subline: "Remote or Office, It Doesn't Matter"),
-                          smallSpace,
-                          Text(
-                            content.data!["about_me"],
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          largeSpace,
-                          AssetHeader(
-                            svgPath: "assets/icons/remote.svg",
-                            title: "Remote Work",
-                          ),
-                          smallSpace,
-                          Text(
-                            content.data!["about_me"],
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          smallSpace,
-                          AssetTitle(
-                              svgPath: "assets/icons/run_hours.svg",
-                              title: "Minimum 4 hours pomodoro run per day"),
-                          largeSpace,
-                          Text(
-                            "Suitable With",
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          smallSpace,
-                          ContentAligner<AssetWithTitleOrHeader>(
-                              space: mediumSpace,
-                              builder: (s) {
-                                return AssetTitle(
-                                    svgPath: s.svgPath, title: s.title);
-                              },
-                              contents: _suitableRemote),
-                          largeSpace,
-                          AssetHeader(
-                            svgPath: "assets/icons/remote.svg",
-                            title: "Office Work",
-                          ),
-                          smallSpace,
-                          Text(
-                            content.data!["about_me"],
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          largeSpace,
-                          Text(
-                            "Suitable With",
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          mediumSpace,
-                          ContentAligner<AssetWithTitleOrHeader>(
-                              space: mediumSpace,
-                              builder: (s) => AssetTitle(
-                                  svgPath: s.svgPath, title: s.title),
-                              contents: _suitableOffice),
-                          largeSpace,
-                          AssetHeader(
-                            svgPath: "assets/icons/magic.svg",
-                            title: "Developer Equipment",
-                          ),
-                          mediumSpace,
-                          ContentAligner<Equipment>(
-                              builder: (eq) => AssetDetailed(
-                                  svgPath: eq.svgPath,
-                                  content: eq.content,
-                                  title: eq.title),
-                              contents: _equipments),
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              }
-            }),
-      ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //? HEADER
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextHeader(headline: "dev_style", subline: "dev_exp"),
+                smallSpace,
+                Text(
+                  "style_exp",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ).tr(),
+                largeSpace,
+                AssetHeader(
+                  svgPath: "assets/icons/remote.svg",
+                  title: "remote_work",
+                ),
+                smallSpace,
+                Text(
+                  "remote_exp",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ).tr(),
+                smallSpace,
+                AssetTitle(
+                    svgPath: "assets/icons/run_hours.svg",
+                    title: "min_pomodoro"),
+                largeSpace,
+                Text(
+                  "suitable_with",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ).tr(),
+                smallSpace,
+                ContentAligner<AssetWithTitleOrHeader>(
+                    space: mediumSpace,
+                    builder: (s) {
+                      return AssetTitle(svgPath: s.svgPath, title: s.title);
+                    },
+                    contents: _suitableRemote),
+                largeSpace,
+                AssetHeader(
+                  svgPath: "assets/icons/office.svg",
+                  title: "office_work",
+                ),
+                smallSpace,
+                Text(
+                  "office_exp",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ).tr(),
+                largeSpace,
+                Text(
+                  "suitable_with",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ).tr(),
+                mediumSpace,
+                ContentAligner<AssetWithTitleOrHeader>(
+                    space: mediumSpace,
+                    builder: (s) =>
+                        AssetTitle(svgPath: s.svgPath, title: s.title),
+                    contents: _suitableOffice),
+                largeSpace,
+                AssetHeader(
+                  svgPath: "assets/icons/magic.svg",
+                  title: "dev_equipment",
+                ),
+                mediumSpace,
+                ContentAligner<Equipment>(
+                    builder: (eq) => AssetDetailed(
+                        svgPath: eq.svgPath,
+                        content: eq.content,
+                        title: eq.title),
+                    contents: _equipments),
+              ],
+            ),
+          )
+        ],
+      )),
     );
 
     if (MediaQuery.of(context).size.width < 250) {

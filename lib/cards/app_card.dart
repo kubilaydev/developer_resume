@@ -77,7 +77,7 @@ class AppCard extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(right: 12),
                   height: 36,
-                  child: Image.asset("assets/images/app_store.png"),
+                  child: Image.asset("assets/images/play_store.png"),
                 ),
             ],
           ),

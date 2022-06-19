@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -38,7 +39,7 @@ class AssetDetailed extends StatelessWidget {
                     .textTheme
                     .subtitle2!
                     .copyWith(fontSize: 12),
-              ),
+              ).tr(),
               Text(
                 content,
                 style: Theme.of(context)

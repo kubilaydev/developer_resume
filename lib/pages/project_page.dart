@@ -123,8 +123,12 @@ class _ProjectPageState extends State<ProjectPage> {
                                             _isShowGallery = !_isShowGallery;
                                           });
                                         },
-                                        child: Image.asset(
-                                            "assets/images/app_ss.png"))),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 62),
+                                          child: Image.asset(
+                                              "assets/images/app_ss.png"),
+                                        ))),
                               if (widget.app.marketLink.length == 1)
                                 Expanded(
                                     //? PLAY MARKET
@@ -135,8 +139,12 @@ class _ProjectPageState extends State<ProjectPage> {
                                                 widget.app.marketLink[0]!);
                                           });
                                         },
-                                        child: Image.asset(
-                                            "assets/images/play_store.png"))),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 62),
+                                          child: Image.asset(
+                                              "assets/images/play_store.png"),
+                                        ))),
                               if (widget.app.marketLink.length == 3)
                                 Expanded(
                                     //? GITHUB
@@ -147,8 +155,12 @@ class _ProjectPageState extends State<ProjectPage> {
                                                 widget.app.marketLink[2]!);
                                           });
                                         },
-                                        child: Image.asset(
-                                            "assets/images/check_code.png"))),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 62),
+                                          child: Image.asset(
+                                              "assets/images/check_code.png"),
+                                        ))),
                             ],
                           ),
                         ],
