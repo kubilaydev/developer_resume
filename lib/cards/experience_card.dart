@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -68,11 +69,17 @@ class ExperienceCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(title,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline1!
-                                  .copyWith(fontSize: 18)),
+                          Expanded(
+                            child: Text(title,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline1!
+                                    .copyWith(fontSize: 18)),
+                          ),
+                          const SizedBox(
+                            width: 12,
+                          ),
                           Text(date,
                               style: Theme.of(context)
                                   .textTheme
@@ -97,10 +104,11 @@ class ExperienceCard extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(content,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline1!
-                                  .copyWith(fontSize: 18)),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1!
+                                      .copyWith(fontSize: 18))
+                              .tr(),
                           const SizedBox(
                             height: 6,
                           ),
