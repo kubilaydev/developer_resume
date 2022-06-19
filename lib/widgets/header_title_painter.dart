@@ -17,12 +17,12 @@ class HeaderTitlePainter extends CustomPainter {
 
     var path = Path()
       ..moveTo(0, 0)
-      ..lineTo(x / 2, y / 2)
-      ..lineTo(0, y)
+      ..lineTo(x / 1.6, 0)
+      ..lineTo(0, y / 1)
       ..close();
 
     var paint = Paint()
-      ..color = Colors.white.withOpacity(0.4)
+      ..color = Colors.black.withOpacity(0.7)
       ..style = PaintingStyle.fill;
 
     canvas.drawPath(path, paint);

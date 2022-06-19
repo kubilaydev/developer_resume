@@ -1,8 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../components/banner_text.dart';
 
 import '../models/asset_with_text.dart';
 import '../models/content.dart';
 import '../tools/constants.dart';
+import '../widgets/asset_button.dart';
 import '../widgets/asset_header.dart';
 import '../widgets/asset_title.dart';
 import '../widgets/content_aligner.dart';
@@ -33,128 +37,181 @@ class _MyServiseState extends State<MyServise> {
           constraints: const BoxConstraints(maxWidth: 500),
           child: SafeArea(
             child: SingleChildScrollView(
-              child: FutureBuilder<Map<String, dynamic>>(
-                  future: contentFtr,
-                  builder: (context, content) {
-                    if (content.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
-                    } else {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //? HEADER
-                          LayoutBuilder(builder: (context, constraints) {
-                            var aspect = 6000 / 3376;
-                            return Stack(
-                              children: [
-                                Image.asset("assets/images/me.jpg",
-                                    width: constraints.maxWidth,
-                                    height: constraints.maxWidth / aspect),
-                                CustomPaint(
-                                  painter: HeaderTitlePainter(
-                                    size: Size(constraints.maxWidth,
-                                        constraints.maxWidth / aspect),
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      "HELLO!",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          }),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //? HEADER
+                LayoutBuilder(builder: (context, constraints) {
+                  var aspect = 6000 / 3376;
+                  return Stack(
+                    children: [
+                      Image.asset("assets/images/me.jpg",
+                          width: constraints.maxWidth,
+                          height: constraints.maxWidth / aspect),
+                      CustomPaint(
+                        painter: HeaderTitlePainter(
+                          size: Size(constraints.maxWidth,
+                              constraints.maxWidth / aspect),
+                        ),
+                      ),
+                      Container(
+                        width: 200,
+                        height: constraints.maxWidth / aspect,
+                        //color: Colors.red,
+                        child: Align(
+                          alignment: const Alignment(-0.6, -0.8),
+                          child: Container(
+                            height: 100,
+                            width: 150,
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextHeader(
-                                    headline: "About Me",
-                                    subline:
-                                        "From entrepreneurship to development"),
-                                smallSpace,
-                                Text(
-                                  content.data!["about_me"],
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                largeSpace,
-                                TextHeader(
-                                    headline: "My Servise",
-                                    subline: "What i can do for you?"),
-                                largeSpace,
-                                AssetHeader(
-                                  svgPath: "assets/icons/apps.svg",
-                                  title: "My Servise",
-                                ),
-                                smallSpace,
-                                Text(
-                                  content.data!["about_me"],
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                largeSpace,
-                                AssetHeader(
-                                  svgPath: "assets/icons/ui_design.svg",
-                                  title: "UI Design",
-                                ),
-                                smallSpace,
-                                Text(
-                                  content.data!["ui_design"],
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                smallSpace,
-                                ContentAligner<AssetWithTitleOrHeader>(
-                                    builder: (c) {
-                                      return AssetTitle(
-                                          svgPath: c.svgPath, title: c.title);
-                                    },
-                                    contents: [
-                                      AssetWithTitleOrHeader(
-                                          title: "Figma",
-                                          svgPath: "assets/icons/figma.svg"),
-                                      AssetWithTitleOrHeader(
-                                          title: "Adobe XD",
-                                          svgPath: "assets/icons/adobe_xd.svg")
-                                    ]),
-                                largeSpace,
-                                AssetHeader(
-                                  svgPath: "assets/icons/bulb.svg",
-                                  title: "Start-up Consultancy",
-                                ),
-                                smallSpace,
-                                Text(
-                                  content.data!["start_up"],
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                smallSpace,
-                                AssetTitle(
-                                    svgPath: "assets/icons/building.svg",
-                                    title: "Been in Silicon Valley "),
-                                smallSpace,
-                                AssetTitle(
-                                    svgPath: "assets/icons/star.svg",
-                                    title: "Many Accelerators Experience"),
-                                smallSpace,
-                                AssetTitle(
-                                    svgPath: "assets/icons/money_check.svg",
-                                    title:
-                                        "Company and Investment Experience "),
-                                smallSpace,
+                              children: const [
+                                BannerText(),
                               ],
                             ),
-                          )
-                        ],
-                      );
-                    }
-                  }),
-            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: constraints.maxWidth,
+                        height: constraints.maxWidth / aspect,
+                        //color: Colors.red,
+                        child: Align(
+                          alignment: const Alignment(1, 0.9),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                height: 32,
+                                width: 32,
+                                child:
+                                    Image.asset("assets/images/own_logo.png"),
+                              ),
+                              horizontalSpace,
+                              const SizedBox(
+                                height: 24,
+                                child: VerticalDivider(
+                                  thickness: 1,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              horizontalSpace,
+                              AssetButton(
+                                  svgPath: "assets/icons/whatsapp.svg",
+                                  voidCallback: () {
+                                    ///
+                                  }),
+                              horizontalSpace,
+                              AssetButton(
+                                  svgPath: "assets/icons/github.svg",
+                                  voidCallback: () {
+                                    ///
+                                  }),
+                              horizontalSpace,
+                              AssetButton(
+                                  svgPath: "assets/icons/github.svg",
+                                  voidCallback: () {
+                                    ///
+                                  }),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+                const SizedBox(
+                  height: 24,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextHeader(headline: "about_me", subline: "from_ent"),
+                      smallSpace,
+                      Text(
+                        "about_exp",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ).tr(),
+                      largeSpace,
+                      TextHeader(
+                          headline: "my_servise",
+                          subline: "What i can do for you?"),
+                      largeSpace,
+                      AssetHeader(
+                        svgPath: "assets/icons/apps.svg",
+                        title: "build_apps",
+                      ),
+                      smallSpace,
+                      Text(
+                        "build_exp",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ).tr(),
+                      ContentAligner<AssetWithTitleOrHeader>(
+                          builder: (c) {
+                            return AssetTitle(
+                                svgPath: c.svgPath, title: c.title);
+                          },
+                          contents: [
+                            AssetWithTitleOrHeader(
+                                title: "Flutter",
+                                svgPath: "assets/icons/flutter_active.svg"),
+                            AssetWithTitleOrHeader(
+                                title: "Supabase",
+                                svgPath: "assets/icons/supabase.svg")
+                          ]),
+                      largeSpace,
+                      AssetHeader(
+                        svgPath: "assets/icons/ui_design.svg",
+                        title: "ui_design",
+                      ),
+                      smallSpace,
+                      Text(
+                        "ui_exp",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ).tr(),
+                      smallSpace,
+                      ContentAligner<AssetWithTitleOrHeader>(
+                          builder: (c) {
+                            return AssetTitle(
+                                svgPath: c.svgPath, title: c.title);
+                          },
+                          contents: [
+                            AssetWithTitleOrHeader(
+                                title: "figma",
+                                svgPath: "assets/icons/figma.svg"),
+                            AssetWithTitleOrHeader(
+                                title: "adobe_xd",
+                                svgPath: "assets/icons/adobe_xd.svg")
+                          ]),
+                      largeSpace,
+                      AssetHeader(
+                        svgPath: "assets/icons/bulb.svg",
+                        title: "start_up",
+                      ),
+                      smallSpace,
+                      Text(
+                        "start_exp",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ).tr(),
+                      smallSpace,
+                      AssetTitle(
+                          svgPath: "assets/icons/building.svg",
+                          title: "been_silicon"),
+                      smallSpace,
+                      AssetTitle(
+                          svgPath: "assets/icons/star.svg",
+                          title: "accelerator_exp"),
+                      smallSpace,
+                      AssetTitle(
+                          svgPath: "assets/icons/money_check.svg",
+                          title: "company_exp"),
+                      smallSpace,
+                    ],
+                  ),
+                )
+              ],
+            )),
           ),
         ),
       ),

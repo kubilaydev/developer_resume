@@ -1,0 +1,36 @@
+{
+     "hello": "Hello",
+     "hi" : "Hi, I Am Kubilay!     ",
+     "i" : "I ",
+     "design": "design",
+     "build" : "build ",
+     "mobile_apps":"mobile apps!",
+     "about_me": "About me",
+     "about_exp" : "After working as an entrepreneur for three years, I went to Silicon Valley to look for investors. During my time there, I decided that I wanted to continue my life as a software developer. I have continued to expand this goal for last three years, ",
+     "from_ent" : "From entrepreneurship to development",
+     "my_servise":"My Servise",
+     "build_apps" : "Build Apps",
+     "build_exp" :"I am developing a mobile application using the Flutter framework. I especially love frontend development. I know how to use backend services but I like UI design and development more.",
+     "ui_design": "UI Design",
+     "ui_exp":"The interface is the identity of an app and the first place it makes its user love itself. Therefore, I can design unique mobile application interfaces for the needs.",
+     "start_up":"Start-up Consultancy",
+     "start_exp":"Due to the pandemic crisis, my entrepreneurial adventure in the silicon valley was interrupted. However, I used this as an opportunity to become a software developer. With the help of my 3 years of entrepreneurial experience, I can foresee the compatibility of the product I developed with the market. In this way, I also benefit in the development process of the product.",
+     "been_silicon":"Been in Silicon Valley",
+     "accelerator_exp":"Many Accelerators Experience",
+     "company_exp": "Company and Investment Experience ",
+
+
+     
+
+     "flutter" : "Flutter",
+     "supabase" :"Supabase",
+     "figma":"Figma",
+     "adobe_xd":"Adobe XD",
+  
+      "languages": {
+        "tr": "Türkçe",
+        "en": "English",
+        "ru": "Russian"
+      }
+  }
+  

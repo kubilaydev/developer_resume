@@ -46,5 +46,13 @@ Divider leftDivider({required Size size}) {
     height: 12,
   );
 }
-///
 
+///
+EdgeInsets appNameMainEdge =
+    const EdgeInsets.only(left: 18, right: 18, top: 12, bottom: 12);
+
+///
+Color designRed = const Color(0XFFd82531);
+
+///
+Color buildBlue = const Color(0XFF0E73CC);

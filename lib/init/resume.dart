@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../core/home_page.dart';
 
 import '../theme/app_theme.dart';
 
-///* MATERIAL APP STATE
+///
 class Resume extends StatelessWidget {
   ///
   Resume({Key? key}) : super(key: key);
@@ -12,6 +13,9 @@ class Resume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: '',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),

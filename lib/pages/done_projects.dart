@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../cards/app_card.dart';
@@ -47,45 +48,32 @@ class _DoneProjectsState extends State<DoneProjects> {
         child: Align(
           alignment: Alignment.center,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500),
-            child: SingleChildScrollView(
-              child: FutureBuilder<Map<String, dynamic>>(
-                  future: contentFtr,
-                  builder: (context, content) {
-                    if (content.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator();
-                    } else {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextHeader(
-                                    headline: "Done Projects",
-                                    subline:
-                                        "Mostly Entrepreneurial Developer"),
-                                smallSpace,
-                                Text(
-                                  content.data!["my_experience"],
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                largeSpace,
-                                for (var app in appList)
-                                  AppCard(
-                                    app: app,
-                                  ),
-                              ],
-                            ),
-                          )
-                        ],
-                      );
-                    }
-                  }),
-            ),
-          ),
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: SingleChildScrollView(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextHeader(headline: "done_projects", subline: "hello"),
+                        smallSpace,
+                        Text(
+                          "done_projects",
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ).tr(),
+                        largeSpace,
+                        for (var app in appList)
+                          AppCard(
+                            app: app,
+                          ),
+                      ],
+                    ),
+                  )
+                ],
+              ))),
         ),
       ),
     );

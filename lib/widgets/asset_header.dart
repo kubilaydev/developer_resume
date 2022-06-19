@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -29,7 +30,7 @@ class AssetHeader extends StatelessWidget {
             title,
             style:
                 Theme.of(context).textTheme.headline1!.copyWith(fontSize: 24),
-          ),
+          ).tr(),
         ),
       ],
     );
