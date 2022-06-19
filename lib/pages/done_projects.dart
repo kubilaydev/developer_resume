@@ -21,21 +21,46 @@ class DoneProjects extends StatefulWidget {
 class _DoneProjectsState extends State<DoneProjects> {
   final List<App> appList = [
     App(
-        appName: "Şive App1",
-        assetPath: "assets/images/accent.jpg",
-        appId: "sive"),
+        appName: "Turla",
+        assetPath: "assets/images/turla.png",
+        appId: "turla",
+        appExp: "turla_exp",
+        marketLink: [
+          Uri(
+              scheme: 'https',
+              host: 'www.play.google.com',
+              path: 'store/apps/details?id=com.turla/'),
+        ]),
     App(
-        appName: "Şive App2",
-        assetPath: "assets/images/accent.jpg",
-        appId: "sive"),
+        appName: "Developer App",
+        assetPath: "assets/images/dev_resume.png",
+        appId: "turla",
+        appExp: "resume_exp",
+        marketLink: [
+          Uri(),
+          Uri(),
+          Uri(
+              scheme: 'https',
+              host: 'www.github.com',
+              path: 'kubilaydev/developer_resume/'),
+        ]),
     App(
-        appName: "Şive App3",
+        appName: "Şive App",
         assetPath: "assets/images/accent.jpg",
-        appId: "sive"),
+        appId: "sive",
+        appExp: "sive_exp",
+        marketLink: []),
     App(
-        appName: "Şive App4",
-        assetPath: "assets/images/accent.jpg",
-        appId: "sive")
+        appName: "Solion Battery App",
+        assetPath: "assets/images/solion.png",
+        appId: "solion",
+        appExp: "solion_exp",
+        marketLink: [
+          Uri(
+              scheme: 'https',
+              host: 'www.play.google.com',
+              path: 'store/apps/details?id=solion.battery_data_indicator/'),
+        ]),
   ];
 
   late Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
@@ -58,10 +83,11 @@ class _DoneProjectsState extends State<DoneProjects> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextHeader(headline: "done_projects", subline: "hello"),
+                        TextHeader(
+                            headline: "done_projects", subline: "mosty_entre"),
                         smallSpace,
                         Text(
-                          "done_projects",
+                          "done_exp",
                           style: Theme.of(context).textTheme.bodyText1,
                         ).tr(),
                         largeSpace,

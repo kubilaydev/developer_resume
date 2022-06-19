@@ -18,9 +18,13 @@
      "been_silicon":"Been in Silicon Valley",
      "accelerator_exp":"Many Accelerators Experience",
      "company_exp": "Company and Investment Experience ",
-
-
-     
+     "done_projects":"Done Projects",
+     "mosty_entre": "Mostly Entrepreneurial Developer",
+     "done_exp":"I've developed apps are mostly about app for entrepreneurship and many of them are being tested in closed beta.",
+     "sive_exp":"There are many dialects in Turkey. People can add fun words in their own dialect and get other people to listen.",
+     "turla_exp":"Turla is a great rental car solution that especially for people who enjoy traveling. It contains many features that activate the spirit of traveling.",
+     "solion_exp":"Solion battery is a practical battery for many product like vehicle, including the Toyota factory. It can be controlled more with this mobile app with the bluetooth on the hardware, .",
+     "resume_exp":"I have developed this product what you are using now to use as a my resume. If you wish, you can review the codes on github.",
 
      "flutter" : "Flutter",
      "supabase" :"Supabase",

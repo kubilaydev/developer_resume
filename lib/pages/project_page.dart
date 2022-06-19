@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/app.dart';
 import '../tools/constants.dart';
@@ -39,6 +41,26 @@ class _ProjectPageState extends State<ProjectPage> {
       });
     });
     super.initState();
+  }
+
+  Future<void> _launchInWebViewOrVC(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'my_header_key': 'my_header_value'}),
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -85,25 +107,48 @@ class _ProjectPageState extends State<ProjectPage> {
                       child: Column(
                         children: [
                           Text(
-                            "content.data",
+                            widget.app.appExp,
                             style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          smallSpace,
+                          ).tr(),
+                          mediumSpace,
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Expanded(
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _isShowGallery = !_isShowGallery;
-                                        });
-                                      },
-                                      child: Image.asset(
-                                          "assets/images/app_ss.png"))),
-                              Expanded(
-                                  child:
-                                      Image.asset("assets/images/app_ss.png")),
+                              if (widget.app.marketLink.isEmpty)
+                                Expanded(
+                                    //? SCREEN SHOT
+                                    child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isShowGallery = !_isShowGallery;
+                                          });
+                                        },
+                                        child: Image.asset(
+                                            "assets/images/app_ss.png"))),
+                              if (widget.app.marketLink.length == 1)
+                                Expanded(
+                                    //? PLAY MARKET
+                                    child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _launchInWebViewOrVC(
+                                                widget.app.marketLink[0]!);
+                                          });
+                                        },
+                                        child: Image.asset(
+                                            "assets/images/play_store.png"))),
+                              if (widget.app.marketLink.length == 3)
+                                Expanded(
+                                    //? GITHUB
+                                    child: GestureDetector(
+                                        onTap: () async {
+                                          setState(() {
+                                            _launchInWebViewOrVC(
+                                                widget.app.marketLink[2]!);
+                                          });
+                                        },
+                                        child: Image.asset(
+                                            "assets/images/check_code.png"))),
                             ],
                           ),
                         ],
@@ -111,6 +156,7 @@ class _ProjectPageState extends State<ProjectPage> {
                     ),
                   ],
                 ),
+
                 //? GALLERY
                 if (_isShowGallery)
                   Column(

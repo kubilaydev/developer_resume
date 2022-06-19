@@ -1,11 +1,12 @@
 ///
 class App {
   ///
-  App({
-    required this.appName,
-    required this.assetPath,
-    required this.appId,
-  });
+  App(
+      {required this.appName,
+      required this.assetPath,
+      required this.appId,
+      required this.appExp,
+      required this.marketLink});
 
   ///
   final String appName;
@@ -15,4 +16,10 @@ class App {
 
   ///
   final String appId;
+
+  ///
+  final String appExp;
+
+  /// firtst apple market, second play store
+  final List<Uri?> marketLink;
 }

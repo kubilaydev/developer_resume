@@ -108,10 +108,11 @@ class _MyServiseState extends State<MyServise> {
                                   }),
                               horizontalSpace,
                               AssetButton(
-                                  svgPath: "assets/icons/github.svg",
+                                  svgPath: "assets/icons/instagram.svg",
                                   voidCallback: () {
                                     ///
                                   }),
+                              horizontalSpace,
                             ],
                           ),
                         ),
