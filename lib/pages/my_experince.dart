@@ -70,7 +70,7 @@ class _MyExperienceState extends State<MyExperience> {
     ),
     Experience(
       svgIconPath: "assets/icons/flutter_active.svg",
-      title: "Shell Eco Marathone.",
+      title: "Shell Eco-marathon",
       content: "eco_content",
       location: "London, United Kingdom",
       date: "May 2017",
