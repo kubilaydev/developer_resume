@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../components/banner_text.dart';
 
 import '../models/asset_with_text.dart';
-import '../models/content.dart';
+
 import '../tools/constants.dart';
+import '../tools/open_on_web.dart';
 import '../widgets/asset_button.dart';
 import '../widgets/asset_header.dart';
 import '../widgets/asset_title.dart';
@@ -23,12 +24,18 @@ class MyServise extends StatefulWidget {
 }
 
 class _MyServiseState extends State<MyServise> {
-  Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
+  final OpenOnWeb _openOnWeb = OpenOnWeb();
+
+  /// https://github.com/kubilaydev
+  final Uri _githubUri =
+      Uri(scheme: 'https', host: 'www.github.com', path: 'kubilaydev/');
+
+  ///https://www.instagram.com/bilalkubilay/
+  final Uri _instaUri =
+      Uri(scheme: 'https', host: 'www.instagram.com', path: 'bilalkubilay/');
 
   @override
   Widget build(BuildContext context) {
-    /// Size of page
-
     return Scaffold(
       backgroundColor: const Color(0XFF1D1F20),
       body: Align(
@@ -97,20 +104,18 @@ class _MyServiseState extends State<MyServise> {
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/whatsapp.svg",
-                                  voidCallback: () {
-                                    ///
-                                  }),
+                                  voidCallback: () {}),
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/github.svg",
                                   voidCallback: () {
-                                    ///
+                                    _openOnWeb.launchInWebViewOrVC(_githubUri);
                                   }),
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/instagram.svg",
                                   voidCallback: () {
-                                    ///
+                                    _openOnWeb.launchInWebViewOrVC(_instaUri);
                                   }),
                               horizontalSpace,
                             ],
@@ -135,9 +140,7 @@ class _MyServiseState extends State<MyServise> {
                         style: Theme.of(context).textTheme.bodyText1,
                       ).tr(),
                       largeSpace,
-                      TextHeader(
-                          headline: "my_servise",
-                          subline: "What i can do for you?"),
+                      TextHeader(headline: "my_servise", subline: "can_do"),
                       largeSpace,
                       AssetHeader(
                         svgPath: "assets/icons/apps.svg",
@@ -155,10 +158,10 @@ class _MyServiseState extends State<MyServise> {
                           },
                           contents: [
                             AssetWithTitleOrHeader(
-                                title: "Flutter",
+                                title: "flutter",
                                 svgPath: "assets/icons/flutter_active.svg"),
                             AssetWithTitleOrHeader(
-                                title: "Supabase",
+                                title: "supabase",
                                 svgPath: "assets/icons/supabase.svg")
                           ]),
                       largeSpace,

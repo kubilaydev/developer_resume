@@ -1,7 +1,7 @@
 name: developer_resume
 description: An example app to demonstrate that what I am developing a clean application
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' 
 
 version: 1.0.0+1
 
@@ -26,16 +26,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-   # YOU CAN GROUP YOUR ASSETS IN THIS FOLDERS
+
   assets:
     - assets/translations/
     - assets/icons/
     - assets/images/
-    - assets/json/
     - assets/projects/
     - assets/projects/sive/
+    - assets/projects/turla/
     
-   # THIS IS MY FAVORITE FONTS, ITs A GIFT FOR YOU 
+
   fonts:
       - family: SourseSansPro
         fonts:

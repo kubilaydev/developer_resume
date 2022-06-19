@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../cards/app_card.dart';
 import '../models/app.dart';
-import '../models/content.dart';
 
 import '../tools/constants.dart';
 
 import '../widgets/text_header.dart';
+import 'project_page.dart';
 
 ///
 class DoneProjects extends StatefulWidget {
@@ -21,49 +21,58 @@ class DoneProjects extends StatefulWidget {
 class _DoneProjectsState extends State<DoneProjects> {
   final List<App> appList = [
     App(
-        appName: "Turla",
-        assetPath: "assets/images/turla.png",
-        appId: "turla",
-        appExp: "turla_exp",
-        marketLink: [
-          Uri(
-              scheme: 'https',
-              host: 'www.play.google.com',
-              path: 'store/apps/details?id=com.turla/'),
-        ]),
+      appName: "Turla",
+      appStatus: AppStatus.isTesting,
+      assetPath: "assets/images/turla.png",
+      appId: "turla",
+      appExp: "turla_exp",
+      marketLink: [
+        ///https://play.google.com/store/apps/details?id=com.turla
+        ///https://play.google.com/store/apps/details?id=com.turla/
+        ///https://play.google.com/apps/testing/com.turla
+        Uri(
+            scheme: 'https',
+            query: 'id=com.turla',
+            host: 'play.google.com',
+            path: 'apps/testing/com.turla'),
+      ],
+    ),
     App(
         appName: "Developer App",
+        appStatus: AppStatus.isOnGithub,
         assetPath: "assets/images/dev_resume.png",
-        appId: "turla",
+        appId: "resume",
         appExp: "resume_exp",
         marketLink: [
-          Uri(),
-          Uri(),
           Uri(
               scheme: 'https',
               host: 'www.github.com',
-              path: 'kubilaydev/developer_resume/'),
+              path: 'kubilaydev/developer_resume'),
         ]),
     App(
         appName: "Şive App",
+        appStatus: AppStatus.isDeveloping,
         assetPath: "assets/images/accent.jpg",
         appId: "sive",
         appExp: "sive_exp",
         marketLink: []),
     App(
         appName: "Solion Battery App",
+        appStatus: AppStatus.isPublised,
         assetPath: "assets/images/solion.png",
         appId: "solion",
         appExp: "solion_exp",
         marketLink: [
+          /// https://play.google.com/store/apps/details?id=solion.battery_data_indicator
+          ///https://play.google.com/store/apps/details?id=solion.battery_data_indicator
           Uri(
-              scheme: 'https',
-              host: 'www.play.google.com',
-              path: 'store/apps/details?id=solion.battery_data_indicator/'),
+            scheme: 'https',
+            host: 'play.google.com',
+            query: 'id=solion.battery_data_indicator',
+            path: 'store/apps/details',
+          ),
         ]),
   ];
-
-  late Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
 
   @override
   Widget build(BuildContext context) {

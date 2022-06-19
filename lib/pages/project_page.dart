@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../models/app.dart';
 import '../tools/constants.dart';
+import '../tools/open_on_web.dart';
 import '../widgets/main_appbar.dart';
 
 ///
@@ -32,7 +32,9 @@ class _ProjectPageState extends State<ProjectPage> {
   int _currentPageIndex = 0;
   double startPositionY = 0.0;
   bool _isShowGallery = false;
-  final int _ssCountNumber = 7;
+  final int _ssCountNumber = 5;
+  final OpenOnWeb _openOnWeb = OpenOnWeb();
+
   @override
   void initState() {
     controller.addListener(() {
@@ -41,26 +43,6 @@ class _ProjectPageState extends State<ProjectPage> {
       });
     });
     super.initState();
-  }
-
-  Future<void> _launchInWebViewOrVC(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(
-          headers: <String, String>{'my_header_key': 'my_header_value'}),
-    )) {
-      throw 'Could not launch $url';
-    }
-  }
-
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw 'Could not launch $url';
-    }
   }
 
   @override
@@ -114,9 +96,10 @@ class _ProjectPageState extends State<ProjectPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              if (widget.app.marketLink.isEmpty)
+                              //? DEVELOPING
+                              if (widget.app.appStatus ==
+                                  AppStatus.isDeveloping)
                                 Expanded(
-                                    //? SCREEN SHOT
                                     child: GestureDetector(
                                         onTap: () {
                                           setState(() {
@@ -129,13 +112,46 @@ class _ProjectPageState extends State<ProjectPage> {
                                           child: Image.asset(
                                               "assets/images/app_ss.png"),
                                         ))),
-                              if (widget.app.marketLink.length == 1)
+                              //? TESTING
+                              if (widget.app.appStatus == AppStatus.isTesting)
+                                Expanded(
+                                    child: Column(
+                                  children: [
+                                    GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isShowGallery = !_isShowGallery;
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 62),
+                                          child: Image.asset(
+                                              "assets/images/app_ss.png"),
+                                        )),
+                                    GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _openOnWeb.launchInWebViewOrVC(
+                                                widget.app.marketLink[0]!);
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 62),
+                                          child: Image.asset(
+                                              "assets/images/be_tester.png"),
+                                        )),
+                                  ],
+                                )),
+                              //? PUBLISHED
+                              if (widget.app.appStatus == AppStatus.isPublised)
                                 Expanded(
                                     //? PLAY MARKET
                                     child: GestureDetector(
                                         onTap: () {
                                           setState(() {
-                                            _launchInWebViewOrVC(
+                                            _openOnWeb.launchInWebViewOrVC(
                                                 widget.app.marketLink[0]!);
                                           });
                                         },
@@ -145,14 +161,15 @@ class _ProjectPageState extends State<ProjectPage> {
                                           child: Image.asset(
                                               "assets/images/play_store.png"),
                                         ))),
-                              if (widget.app.marketLink.length == 3)
+                              //? ONGITHUB
+                              if (widget.app.appStatus == AppStatus.isOnGithub)
                                 Expanded(
                                     //? GITHUB
                                     child: GestureDetector(
                                         onTap: () async {
                                           setState(() {
-                                            _launchInWebViewOrVC(
-                                                widget.app.marketLink[2]!);
+                                            _openOnWeb.launchInWebViewOrVC(
+                                                widget.app.marketLink[0]!);
                                           });
                                         },
                                         child: Container(
@@ -203,7 +220,8 @@ class _ProjectPageState extends State<ProjectPage> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: _buildPageIndicator(_currentPageIndex),
+                        children: _buildPageIndicator(
+                            _currentPageIndex, _ssCountNumber),
                       ),
                       const SizedBox(
                         height: 48,
@@ -218,9 +236,9 @@ class _ProjectPageState extends State<ProjectPage> {
     );
   }
 
-  List<Widget> _buildPageIndicator(int position) {
+  List<Widget> _buildPageIndicator(int position, int picCount) {
     var list = <Widget>[];
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < picCount; i++) {
       list.add(i == position ? _indicator(true) : _indicator(false));
     }
     return list;
@@ -256,4 +274,19 @@ class _ProjectPageState extends State<ProjectPage> {
       ),
     );
   }
+}
+
+///
+enum AppStatus {
+  /// Has links for markets
+  isPublised,
+
+  /// Has SS and test link
+  isTesting,
+
+  /// Has only SS
+  isDeveloping,
+
+  /// Show Github
+  isOnGithub,
 }

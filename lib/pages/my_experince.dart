@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../cards/experience_card.dart';
-import '../models/content.dart';
+
 import '../models/experience.dart';
 import '../tools/constants.dart';
 
@@ -76,8 +76,6 @@ class _MyExperienceState extends State<MyExperience> {
       date: "May 2017",
     ),
   ];
-
-  late Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
 
   @override
   Widget build(BuildContext context) {

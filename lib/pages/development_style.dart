@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../models/asset_with_text.dart';
-import '../models/content.dart';
+
 import '../models/equpment.dart';
 import '../tools/constants.dart';
 import '../widgets/asset_detailed.dart';
@@ -26,8 +26,6 @@ class _DevelopmentStyleState extends State<DevelopmentStyle> {
   void initState() {
     super.initState();
   }
-
-  Future<Map<String, dynamic>> contentFtr = Content().getTextContent();
 
   final List<Equipment> _equipments = [
     Equipment(
