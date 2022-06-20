@@ -18,7 +18,8 @@ class HeaderTitlePainter extends CustomPainter {
     var path = Path()
       ..moveTo(0, 0)
       ..lineTo(x / 1.6, 0)
-      ..lineTo(0, y / 1)
+      ..lineTo(40, y)
+      ..lineTo(0, y)
       ..close();
 
     var paint = Paint()

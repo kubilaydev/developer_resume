@@ -67,7 +67,7 @@ class _MyServiseState extends State<MyServise> {
                         height: constraints.maxWidth / aspect,
                         //color: Colors.red,
                         child: Align(
-                          alignment: const Alignment(-0.6, -0.8),
+                          alignment: const Alignment(-0.6, -0.2),
                           child: Container(
                             height: 100,
                             width: 150,
@@ -143,7 +143,7 @@ class _MyServiseState extends State<MyServise> {
                         "about_exp",
                         style: Theme.of(context).textTheme.bodyText1,
                       ).tr(),
-                      smallSpace,
+                      mediumSpace,
                       AssetDetailed(
                           svgPath: "assets/icons/language.svg",
                           content: "B2+, Upper Intermadiate",
