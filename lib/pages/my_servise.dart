@@ -177,12 +177,11 @@ class _MyServiseState extends State<MyServise> {
                         svgPath: "assets/icons/ui_design.svg",
                         title: "ui_design",
                       ),
-                      smallSpace,
+                      mediumSpace,
                       Text(
                         "ui_exp",
                         style: Theme.of(context).textTheme.bodyText1,
                       ).tr(),
-                      smallSpace,
                       ContentAligner<AssetWithTitleOrHeader>(
                           builder: (c) {
                             return AssetTitle(
@@ -201,7 +200,7 @@ class _MyServiseState extends State<MyServise> {
                         svgPath: "assets/icons/bulb.svg",
                         title: "start_up",
                       ),
-                      smallSpace,
+                      mediumSpace,
                       Text(
                         "start_exp",
                         style: Theme.of(context).textTheme.bodyText1,
