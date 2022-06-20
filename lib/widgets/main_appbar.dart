@@ -66,7 +66,10 @@ class _MainAppBarState extends State<MainAppBar> {
         toolbarHeight: 60, // Don't show the leading button
         title: Text(
           widget.title,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1!
+              .copyWith(color: Colors.white),
         ));
   }
 }

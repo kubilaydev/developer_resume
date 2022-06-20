@@ -8,6 +8,7 @@ import '../models/asset_with_text.dart';
 import '../tools/constants.dart';
 import '../tools/open_on_web.dart';
 import '../widgets/asset_button.dart';
+import '../widgets/asset_detailed.dart';
 import '../widgets/asset_header.dart';
 import '../widgets/asset_title.dart';
 import '../widgets/content_aligner.dart';
@@ -141,9 +142,14 @@ class _MyServiseState extends State<MyServise> {
                         "about_exp",
                         style: Theme.of(context).textTheme.bodyText1,
                       ).tr(),
+                      smallSpace,
+                      AssetDetailed(
+                          svgPath: "assets/icons/language.svg",
+                          content: "B2+, Upper Intermadiate",
+                          title: "certified_eng"),
                       largeSpace,
                       TextHeader(headline: "my_servise", subline: "can_do"),
-                      largeSpace,
+                      smallSpace,
                       AssetHeader(
                         svgPath: "assets/icons/apps.svg",
                         title: "build_apps",
