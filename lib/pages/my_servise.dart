@@ -109,6 +109,7 @@ class _MyServiseState extends State<MyServise> {
                                   voidCallback: () {}),
                               horizontalSpace,
                               */
+                              horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/github.svg",
                                   voidCallback: () {
