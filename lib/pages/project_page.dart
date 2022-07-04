@@ -54,7 +54,7 @@ class _ProjectPageState extends State<ProjectPage> {
             func: () {
               setState(() {
                 _isShowGallery = !_isShowGallery;
-                print("appbar Fucn out");
+                //  print("appbar Fucn out");
               });
             },
             title: widget.app.appName,
@@ -68,122 +68,126 @@ class _ProjectPageState extends State<ProjectPage> {
             constraints: const BoxConstraints(maxWidth: 500),
             child: Stack(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                        onVerticalDragStart: (details) {
-                          startPositionY = details.globalPosition.dy;
-                        },
-                        onVerticalDragEnd: (details) {
-                          print(details.primaryVelocity);
-                          if (details.primaryVelocity! > 10) {
-                            Navigator.pop(context);
-                          }
-                        },
-                        child: Hero(tag: widget.tag, child: widget.header)),
-                    smallSpace,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 24),
-                      child: Column(
-                        children: [
-                          Text(
-                            widget.app.appExp,
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ).tr(),
-                          mediumSpace,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              //? DEVELOPING
-                              if (widget.app.appStatus ==
-                                  AppStatus.isDeveloping)
-                                Expanded(
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _isShowGallery = !_isShowGallery;
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 62),
-                                          child: Image.asset(
-                                              "assets/images/app_ss.png"),
-                                        ))),
-                              //? TESTING
-                              if (widget.app.appStatus == AppStatus.isTesting)
-                                Expanded(
-                                    child: Column(
-                                  children: [
-                                    GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _isShowGallery = !_isShowGallery;
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 62),
-                                          child: Image.asset(
-                                              "assets/images/app_ss.png"),
-                                        )),
-                                    GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _openOnWeb.launchInWebViewOrVC(
-                                                widget.app.marketLink[0]!);
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 62),
-                                          child: Image.asset(
-                                              "assets/images/be_tester.png"),
-                                        )),
-                                  ],
-                                )),
-                              //? PUBLISHED
-                              if (widget.app.appStatus == AppStatus.isPublised)
-                                Expanded(
-                                    //? PLAY MARKET
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _openOnWeb.launchInWebViewOrVC(
-                                                widget.app.marketLink[0]!);
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 62),
-                                          child: Image.asset(
-                                              "assets/images/play_store.png"),
-                                        ))),
-                              //? ONGITHUB
-                              if (widget.app.appStatus == AppStatus.isOnGithub)
-                                Expanded(
-                                    //? GITHUB
-                                    child: GestureDetector(
-                                        onTap: () async {
-                                          setState(() {
-                                            _openOnWeb.launchInWebViewOrVC(
-                                                widget.app.marketLink[0]!);
-                                          });
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 62),
-                                          child: Image.asset(
-                                              "assets/images/check_code.png"),
-                                        ))),
-                            ],
-                          ),
-                        ],
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                          onVerticalDragStart: (details) {
+                            startPositionY = details.globalPosition.dy;
+                          },
+                          onVerticalDragEnd: (details) {
+                            print(details.primaryVelocity);
+                            if (details.primaryVelocity! > 10) {
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Hero(tag: widget.tag, child: widget.header)),
+                      smallSpace,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 24),
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.app.appExp,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ).tr(),
+                            mediumSpace,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                //? DEVELOPING
+                                if (widget.app.appStatus ==
+                                    AppStatus.isDeveloping)
+                                  Expanded(
+                                      child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _isShowGallery = !_isShowGallery;
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 62),
+                                            child: Image.asset(
+                                                "assets/images/app_ss.png"),
+                                          ))),
+                                //? TESTING
+                                if (widget.app.appStatus == AppStatus.isTesting)
+                                  Expanded(
+                                      child: Column(
+                                    children: [
+                                      GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _isShowGallery = !_isShowGallery;
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 62),
+                                            child: Image.asset(
+                                                "assets/images/app_ss.png"),
+                                          )),
+                                      GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _openOnWeb.launchInWebViewOrVC(
+                                                  widget.app.marketLink[0]!);
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 62),
+                                            child: Image.asset(
+                                                "assets/images/be_tester.png"),
+                                          )),
+                                    ],
+                                  )),
+                                //? PUBLISHED
+                                if (widget.app.appStatus ==
+                                    AppStatus.isPublised)
+                                  Expanded(
+                                      //? PLAY MARKET
+                                      child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _openOnWeb.launchInWebViewOrVC(
+                                                  widget.app.marketLink[0]!);
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 62),
+                                            child: Image.asset(
+                                                "assets/images/play_store.png"),
+                                          ))),
+                                //? ONGITHUB
+                                if (widget.app.appStatus ==
+                                    AppStatus.isOnGithub)
+                                  Expanded(
+                                      //? GITHUB
+                                      child: GestureDetector(
+                                          onTap: () async {
+                                            setState(() {
+                                              _openOnWeb.launchInWebViewOrVC(
+                                                  widget.app.marketLink[0]!);
+                                            });
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 62),
+                                            child: Image.asset(
+                                                "assets/images/check_code.png"),
+                                          ))),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
 
                 //? GALLERY

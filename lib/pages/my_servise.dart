@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 import '../components/banner_text.dart';
 
@@ -25,6 +28,18 @@ class MyServise extends StatefulWidget {
 }
 
 class _MyServiseState extends State<MyServise> {
+  Future<void> launchWhatsApp() async {
+    final link = const WhatsAppUnilink(
+      phoneNumber: '+90(537)2039740',
+      text: "Hello! Can we talk about mobile apps?",
+    );
+    // Convert the WhatsAppUnilink instance to a string.
+    // Use either Dart's string interpolation or the toString() method.
+    // The "launch" method is part of "url_launcher".
+    print(link);
+    await launchUrlString('$link');
+  }
+
   final OpenOnWeb _openOnWeb = OpenOnWeb();
 
   /// https://github.com/kubilaydev
@@ -102,13 +117,12 @@ class _MyServiseState extends State<MyServise> {
                                   color: Colors.white,
                                 ),
                               ),
-                              /*
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/whatsapp.svg",
-                                  voidCallback: () {}),
-                              horizontalSpace,
-                              */
+                                  voidCallback: () async {
+                                    await launchWhatsApp();
+                                  }),
                               horizontalSpace,
                               AssetButton(
                                   svgPath: "assets/icons/github.svg",

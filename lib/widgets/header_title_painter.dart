@@ -12,13 +12,21 @@ class HeaderTitlePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    print(" size with : ${this.size.width}");
     var x = this.size.width;
     var y = this.size.height;
 
-    var path = Path()
+    var tinyPath = Path()
       ..moveTo(0, 0)
       ..lineTo(x / 1.6, 0)
       ..lineTo(40, y)
+      ..lineTo(0, y)
+      ..close();
+
+    var expandedPath = Path()
+      ..moveTo(0, 0)
+      ..lineTo(x / 1.6, 0)
+      ..lineTo(80, y)
       ..lineTo(0, y)
       ..close();
 
@@ -26,7 +34,7 @@ class HeaderTitlePainter extends CustomPainter {
       ..color = Colors.black.withOpacity(0.7)
       ..style = PaintingStyle.fill;
 
-    canvas.drawPath(path, paint);
+    canvas.drawPath(this.size.width > 410 ? tinyPath : expandedPath, paint);
   }
 
   @override

@@ -61,19 +61,20 @@ class AppCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              if (app.marketLink.isEmpty)
+              if (app.appStatus == AppStatus.isDeveloping)
                 Container(
                   margin: const EdgeInsets.only(right: 12),
                   height: 36,
                   child: Image.asset("assets/images/app_ss.png"),
                 ),
-              if (app.marketLink.length == 3)
+              if (app.appStatus == AppStatus.isOnGithub)
                 Container(
                   margin: const EdgeInsets.only(right: 12),
                   height: 36,
                   child: Image.asset("assets/images/check_code.png"),
                 ),
-              if (app.marketLink.length == 1)
+              if (app.appStatus == AppStatus.isPublised ||
+                  app.appStatus == AppStatus.isTesting)
                 Container(
                   margin: const EdgeInsets.only(right: 12),
                   height: 36,
